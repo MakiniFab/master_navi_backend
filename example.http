@@ -1,0 +1,18 @@
+POST http://localhost:5000/signup
+Content-Type: application/json
+
+{
+  "first_name": "Alex",
+  "account": "alex",
+  "email": "alex.gmail.com",
+  "phone_no": "254704573938",
+  "password": "farbean"
+}
+
+POST http://127.0.0.1:5000/login
+Content-Type: application/json
+
+{
+  "email": "farbean@gmail.com.com",
+  "password": "farbean"
+}
