@@ -6,7 +6,7 @@ from models import db , User, TokenBlocklist
 from flask_restful import reqparse, Resource, Api
 from flask import Blueprint
 from werkzeug.security import generate_password_hash, check_password_hash    #hash password
-from flask_jwt_extended import create_access_token, verify_jwt_in_request, JWTManager, get_jwt, jwt_required #Authentication and route protection
+from flask_jwt_extended import create_access_token, verify_jwt_in_request, get_jwt_identity, JWTManager, get_jwt, jwt_required #Authentication and route protection
 
 jwt = JWTManager()
 
@@ -85,6 +85,17 @@ class Login(Resource):
         else:
             return {"msg": 'Invalid credentials!'}, 401
 
+#get user details
+class Profile(Resource):
+    @jwt_required()
+    def get(self):
+        user_id = get_jwt_identity()
+        user = User.query.get(user_id)
+        if user:
+            return user.to_dict(), 200
+        else:
+            return jsonify({"msg": "User not found"}), 404
+
 #User log out
 class Logout(Resource):
     @jwt_required()
@@ -109,5 +120,6 @@ class DeleteUser(Resource):
 
 api.add_resource(RegisterUser, '/signup')
 api.add_resource(Login, '/login')
+api.add_resource(Profile, '/profile')
 api.add_resource(Logout, '/logout')
 api.add_resource(DeleteUser, '/delete/<int:id>')

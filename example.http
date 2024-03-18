@@ -13,6 +13,14 @@ POST http://127.0.0.1:5000/login
 Content-Type: application/json
 
 {
-  "email": "farbean@gmail.com.com",
-  "password": "farbean"
+  "email": "navigator@gmail.com.com",
+  "password": "navigator"
 }
+
+DELETE http://localhost:5000/delete/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxMDY3NzA0MiwianRpIjoiYmQ2ODliOWUtNDQwZi00ZmZmLWFhNWQtMmQyZWI2ZmZkYWVjIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MiwibmJmIjoxNzEwNjc3MDQyLCJjc3JmIjoiNTFjNzUxOTgtY2Q4Zi00Njc5LWJjYjYtYmI2ZmIyN2RjNzE4IiwiZXhwIjoxNzEwNjgwNjQyLCJhZG1pbiI6dHJ1ZX0.gYLGRmjRRR1dE55e0gUOv02TUGhILXTxytr4ojHAzlI
+
+GET http://localhost:5000/profile
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxMDc4NjgxMSwianRpIjoiZjIxNjhhZmEtZDU5MC00YWY4LWIxMGQtYWE4NjczMGMzZTEwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzEwNzg2ODExLCJjc3JmIjoiNWQwOGI0MjctNjk2OS00N2M2LThhOTktZTlmNzJhMzY1MDNlIiwiZXhwIjoxNzEwNzkwNDExLCJhZG1pbiI6dHJ1ZX0.0yVMe_3lWUv8KhnQBpnQnw5LIG2BHny06r9OYnk0AVs
