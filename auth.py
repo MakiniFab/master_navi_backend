@@ -3,7 +3,7 @@ from flask import Flask
 from datetime import datetime
 from functools import wraps
 from models import db , User, TokenBlocklist
-from flask_restful import reqparse, Resource, Api
+from flask_restful import reqparse, Resource
 from flask import Blueprint
 from werkzeug.security import generate_password_hash, check_password_hash    #hash password
 from flask_jwt_extended import create_access_token, verify_jwt_in_request, get_jwt_identity, JWTManager, get_jwt, jwt_required #Authentication and route protection
@@ -17,7 +17,7 @@ def admin_required():
         def decorator(*args, **kwargs):
             verify_jwt_in_request()
             claims = get_jwt()
-            if claims["admin"] == True:  #only admins have access
+            if claims["admin"] == True:  
                 return fn(*args, **kwargs)
             else:
                 return {"msg": "admins only"}, 403
@@ -78,7 +78,7 @@ class Login(Resource):
         if user:
                 if check_password_hash(user.password, data.get('password')):
                     additional_claims = {"admin": user.admin}
-                    token = create_access_token(identity=user.id, additional_claims=additional_claims)
+                    token = create_access_token(identity=user.id, additional_claims={"admin": user.admin, "phone_number": user.phone_no})
                     return token
                 else:
                     return {"msg": 'Invalid credentials!'}, 401
