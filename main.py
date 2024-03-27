@@ -5,6 +5,7 @@ from flask import Flask
 from flask_migrate import Migrate
 from flask_restful import reqparse, Resource
 from models import db, User
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from auth import auth_bp, jwt, admin_required
 from flask_jwt_extended import jwt_required
@@ -12,6 +13,7 @@ from flask import Blueprint
 
 #configure my app
 app = Flask(__name__)
+CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
