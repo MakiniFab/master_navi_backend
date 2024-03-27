@@ -13,7 +13,7 @@ from flask import Blueprint
 
 #configure my app
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins='http://localhost:5173')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
