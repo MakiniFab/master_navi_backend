@@ -3,7 +3,7 @@ from flask import Flask
 from datetime import datetime
 from functools import wraps
 from models import db , User, TokenBlocklist
-from flask_restful import reqparse, Resource
+from flask_restful import reqparse, Resource, Api 
 from flask import Blueprint
 from werkzeug.security import generate_password_hash, check_password_hash    #hash password
 from flask_jwt_extended import create_access_token, verify_jwt_in_request, get_jwt_identity, JWTManager, get_jwt, jwt_required #Authentication and route protection
